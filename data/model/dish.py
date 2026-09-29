@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 from common.base_object import BaseObject
 from data.model.dish_size import DishSize
-from jovielicious.data.model.dish_sizes import DishSizes
+from data.model.dish_sizes import DishSizes
 
 class Dish(BaseObject):
     id: str | None = None  
@@ -21,7 +21,7 @@ class Dish(BaseObject):
         cls._id = id
         cls._sizes = sizes
         
-        if id == None:
+        if (id == None):
             cls.id = name
 
         if cls._sizes == None:
@@ -30,7 +30,7 @@ class Dish(BaseObject):
 
     @property
     def sizes(self):
-       if self._sizes == None:
+       if (self._sizes == None):
            self.sizes == DishSizes()
            return self._sizes 
 

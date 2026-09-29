@@ -1,31 +1,20 @@
-
-
 import logging
 from dataclasses import dataclass
 from data.model.dish_size import DishSize
 
 @dataclass
 class DishSizes:
-    items : list[DishSize] | None = None
+    items: list[DishSize] | None = None
 
-    def __init__(self, items : list[DishSize] = None):
+    def __init__(self, items: list[DishSize] = None):
         self.items = items
 
-        if self.items == None:
-             self.items : list[DishSize] = [] 
+        if (self.items == None):
+            self.items : list[DishSize] = [] 
 
-    # @property
-    # def items(self) -> list[DishSize]: 
-    #    return self._items
-
-    # @items.setter
-    # def items(self, value ):
-    #     self.items = value
         
-    def add_size(
-        self, 
-        dishSize : DishSize) -> bool:
-        if dishSize in self.items:
+    def add_size(self, dishSize: DishSize)->bool:
+        if (dishSize in self.items):
             logging.info(f"Dish {dishSize.size} already exists")
             return False
         else:
@@ -36,19 +25,19 @@ class DishSizes:
 
     def update_size(self, dish_size: DishSize) -> bool:
             updated_size = self.get_size(dish_size.size)
-            if self.update_size == None:
+            if (self.update_size == None):
                 return False
             else:
                 updated_size.update(
-                    description=dish_size.description,
-                    price=dish_size.price
+                    description = dish_size.description,
+                    price = dish_size.price
                 )
                 return True
 
 
     def remove_size(self, size: str) -> bool:
             size_to_remove = self.get_size(size)
-            if size_to_remove == None:
+            if (size_to_remove) == None:
                 return False
             else:
                 self.items.remove(size_to_remove)
@@ -57,7 +46,7 @@ class DishSizes:
         
     def get_size(self, size: str) -> DishSize:
             idx = self.__get_size_index(size)
-            if idx == None:
+            if (idx == None):
                 return None
             else:
                 return self.items[idx] 

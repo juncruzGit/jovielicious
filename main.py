@@ -3,7 +3,7 @@ sys.path.append("/Users/Shared/Python")
 
 import uvicorn
 from fastapi import FastAPI
-from jovielicious.api.routers import home, dishes, dish, dish_sizes, dish_size
+from api.routers import home, dishes, dish, dish_sizes, dish_size
 
 app = FastAPI()
 
