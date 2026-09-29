@@ -1,3 +1,7 @@
+import os
+from dotenv import load_dotenv
+load_dotenv() 
+
 import sys
 sys.path.append("/Users/Shared/Python")
 
@@ -14,9 +18,10 @@ app.include_router(dish_sizes.router)
 app.include_router(dish_size.router)
 
 if __name__ == '__main__':
+    print( os.getenv("DEBUG_MODE"))
     uvicorn.run(
         "main:app", 
-        host="127.0.0.1", 
-        port=8000,
-        reload=True
+        host = "127.0.0.1", 
+        port = 8000,
+        reload = os.getenv("DEBUG_MODE")
     )
