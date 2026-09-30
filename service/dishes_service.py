@@ -7,17 +7,17 @@ class DishesService():
 
     _repository = DishRepository()
 
-    def add(self, item: Dish) -> Dish:
-        if item.id == None or self._repository.find(item.id) == None: 
-            item.id = item.name.lower()
-            self._repository.insert(item)
-            logging.info(f"item {item} added.")
-            return item
+    def add(self, item: Dish) -> Dish | None:
+        if (item.id is None or 
+            self._repository.find(item.id) is None): 
+                item.id = item.name
+                self._repository.insert(item)
+                logging.info(f"item {item} added.")
+                return item
         else:
             return None
 
-    def get(self, criteria :dict = None) -> list[Dish]:
-        result = self._repository.get(criteria)
+    def get(self, criteria: dict | None = None) -> list[Dish] | None:
         return self._repository.get(criteria)
 
     def modify(self, item: Dish) -> None:

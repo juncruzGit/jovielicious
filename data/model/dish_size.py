@@ -7,14 +7,14 @@ class DishSize:
     price: float
 
     def __init__(
-            cls, 
+            self, 
             size: str,
             description: str,
-            price: str):
-        cls.size = size
-        cls.description = description
-        cls.price = price
+            price: float):
+        self.size = size
+        self.description = description
+        self.price = price
 
-    def update(self, description: str, price:str):
+    def update(self, description: str, price: float):
         self.description = description
         self.price = price
