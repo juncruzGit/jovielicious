@@ -1,12 +1,9 @@
-import os
-from dotenv import load_dotenv
-load_dotenv() 
 
 import sys
 sys.path.append("/Users/Shared/Python")
 
 import uvicorn
-from fastapi import FastAPI
+from fastapi import Depends, FastAPI
 from api.routers import home, dishes, dish, dish_sizes, dish_size
 
 app = FastAPI()
@@ -18,10 +15,10 @@ app.include_router(dish_sizes.router)
 app.include_router(dish_size.router)
 
 if __name__ == '__main__':
-    print( os.getenv("DEBUG_MODE"))
+
     uvicorn.run(
         "main:app", 
         host = "127.0.0.1", 
         port = 8000,
-        reload = os.getenv("DEBUG_MODE")
+        reload = True
     )
