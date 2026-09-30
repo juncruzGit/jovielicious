@@ -2,10 +2,7 @@ from dataclasses import dataclass
 
 @dataclass
 class DishSize:
-    size: str
-    description: str
-    price: float
-
+  
     def __init__(
             self, 
             size: str,
@@ -15,6 +12,7 @@ class DishSize:
         self.description = description
         self.price = price
 
-    def update(self, description: str, price: float):
+    def update(self, description: str, price: float) -> None:
         self.description = description
         self.price = price
+        return None

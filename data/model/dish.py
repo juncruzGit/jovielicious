@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 
-# from common.base_object import BaseObject
 from data.model.dish_size import DishSize
 from data.model.dish_sizes import DishSizes
 
@@ -17,9 +16,6 @@ class Dish():
         self._id = id
         self._sizes = sizes
         
-        # if self._sizes == None:
-        #     new_sizes: DishSizes = DishSizes()
-        #     self.sizes = new_sizes
 
     @property
     def id(self) -> str | None:

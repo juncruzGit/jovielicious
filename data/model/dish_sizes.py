@@ -4,13 +4,20 @@ from data.model.dish_size import DishSize
 
 @dataclass
 class DishSizes:
-    items: list[DishSize] | None = None
+    
+    def __init__(self, items: list[DishSize] | None = None):
+        self._items = items
 
-    def __init__(self, items: list[DishSize] = None):
-        self.items = items
+    @property
+    def items(self) -> list[DishSize]:
+        if self._items is None:
+            self._items = []
 
-        if (self.items == None):
-            self.items : list[DishSize] = [] 
+        return self._items
+        
+    @items.setter
+    def items(self, value: list[DishSize]):
+        self.items = value
 
         
     def add_size(self, dishSize: DishSize)->bool:
@@ -24,17 +31,15 @@ class DishSizes:
 
 
     def update_size(self, dish_size: DishSize) -> bool:
-            updated_size = self.get_size(dish_size.size)
-            if (self.update_size == None):
-                return False
+            updated_size: DishSize | None = self.get_size(dish_size.size)
+
+            if updated_size is not None:
+                 updated_size.update(description = dish_size.description, price = dish_size.price)
+                 return True
             else:
-                updated_size.update(
-                    description = dish_size.description,
-                    price = dish_size.price
-                )
-                return True
+                 return False
 
-
+    
     def remove_size(self, size: str) -> bool:
             size_to_remove = self.get_size(size)
             if (size_to_remove) == None:
@@ -44,7 +49,7 @@ class DishSizes:
                 return True
 
         
-    def get_size(self, size: str) -> DishSize:
+    def get_size(self, size: str) -> DishSize | None:
             idx = self.__get_size_index(size)
             if (idx == None):
                 return None
@@ -52,8 +57,8 @@ class DishSizes:
                 return self.items[idx] 
 
             
-    def __get_size_index(cls, size:str) -> int:
-            return [i for i, x in enumerate(cls.items) if x.size.lower() == size][0]
+    def __get_size_index(self, size:str) -> int:
+            return [i for i, x in enumerate(self.items) if x.size.lower() == size][0]
 
 
 
