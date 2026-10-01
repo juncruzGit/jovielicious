@@ -12,7 +12,7 @@ class DishSize:
         self.description = description
         self.price = price
 
-    def update(self, description: str, price: float) -> None:
+    def update(self, description: str, price: float) -> DishSize:
         self.description = description
         self.price = price
-        return None
+        return self

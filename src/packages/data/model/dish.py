@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
-from data.model.dish_size import DishSize
-from data.model.dish_sizes import DishSizes
+from .dish_size import DishSize
+from .dish_sizes import DishSizes
 
 class Dish():
 
@@ -13,7 +13,12 @@ class Dish():
             sizes: DishSizes | None = None):
         self.name = name
         self.category = category
-        self._id = id
+
+        if id is not None:
+            self.id = id
+        else:
+            self.id = name
+
         self._sizes = sizes
         
 

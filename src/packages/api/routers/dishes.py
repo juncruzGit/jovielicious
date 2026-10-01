@@ -1,9 +1,12 @@
 from typing import cast
 from fastapi import APIRouter, status, HTTPException, Response
 
-from api.resources import DishResource
-from data.model.dish import Dish
-from service.dishes_service import DishesService
+# from packages.api.resources import DishResource
+from ..resources import DishResource
+from ...data.model.dish import Dish
+
+from ...service.dishes_service import DishesService
+
 
 dishes_service : DishesService = DishesService()
 

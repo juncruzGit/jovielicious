@@ -1,9 +1,9 @@
 from dataclasses import dataclass
 
-from data.model.dish_sizes import DishSizes
-from data.repository.dish_repository import DishRepository
-from data.model.dish import Dish, DishSize
-from service.dish_sizes_service import DishSizesService
+from ..data.model.dish_sizes import DishSizes
+from ..data.model.dish import Dish, DishSize
+from ..data.repository.dish_repository import DishRepository
+
 
 class DishService():
 

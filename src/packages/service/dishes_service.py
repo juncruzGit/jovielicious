@@ -1,7 +1,9 @@
 import logging
 
-from data.repository.dish_repository import DishRepository
-from data.model.dish import Dish, DishSize
+
+
+from ..data.repository.dish_repository import DishRepository
+from ..data.model.dish import Dish, DishSize
 
 class DishesService():
 

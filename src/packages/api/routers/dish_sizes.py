@@ -1,9 +1,9 @@
 from typing import cast
 from fastapi import APIRouter, status, HTTPException
 
-from api.resources import DishSizeResource
-from data.model.dish_size import DishSize
-from service.dish_sizes_service import DishSizesService
+from ..resources import DishSizeResource
+from ...data.model.dish_size import DishSize
+from ...service.dish_sizes_service import DishSizesService
 
 dish_sizes_service : DishSizesService = DishSizesService()
 
