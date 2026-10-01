@@ -1,5 +1,4 @@
 from typing import cast
-
 from fastapi import APIRouter, status, HTTPException
 
 from api.resources import DishSizeResource

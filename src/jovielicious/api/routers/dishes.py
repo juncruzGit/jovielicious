@@ -1,7 +1,7 @@
 from typing import cast
 from fastapi import APIRouter, status, HTTPException, Response
 
-from api.routers.dish import DishResource
+from api.resources import DishResource
 from data.model.dish import Dish
 from service.dishes_service import DishesService
 

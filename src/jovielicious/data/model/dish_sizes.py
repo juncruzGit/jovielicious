@@ -1,4 +1,5 @@
 import logging
+
 from dataclasses import dataclass
 from data.model.dish_size import DishSize
 

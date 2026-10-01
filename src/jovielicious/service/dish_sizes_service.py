@@ -53,7 +53,7 @@ class DishSizesService():
             return None
 
         dish_sizes: DishSizes = dish.sizes
-        dish_size: DishSize = dish_sizes.get_size(size)
+        dish_size: DishSize | None = dish_sizes.get_size(size)
 
         if dish_size is None:
             return None
