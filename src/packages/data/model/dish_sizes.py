@@ -1,19 +1,20 @@
 import logging
 
 from dataclasses import dataclass
-from data.model.dish_size import DishSize
+from ...data.model.dish_size import DishSize
 
 @dataclass
 class DishSizes:
     
     def __init__(self, items: list[DishSize] | None = None):
-        self._items = items
+        if items is not None:
+            self._items = items
+        else:
+            self._items = []
+             
 
     @property
     def items(self) -> list[DishSize]:
-        if self._items is None:
-            self._items = []
-
         return self._items
         
     @items.setter
