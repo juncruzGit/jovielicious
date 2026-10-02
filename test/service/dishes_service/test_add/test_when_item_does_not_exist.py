@@ -12,7 +12,7 @@ def dishes_service():
 def test_result(dishes_service, mocker):
     mocker.stopall()
     mocked_repo_find = mocker.patch.object(
-        dishes_service._repository, 
+        dishes_service.repository, 
         "find", 
         return_value = None)
     result: Dish | None = dishes_service.add(__dish)
@@ -22,12 +22,12 @@ def test_result(dishes_service, mocker):
 def test_repo_should_call_insert(dishes_service, mocker):
     mocker.stopall()
     mocked_repo_find = mocker.patch.object(
-        dishes_service._repository, 
+        dishes_service.repository, 
         "find", 
         return_value = None)
 
     mocked_repo_insert = mocker.patch.object(
-            dishes_service._repository, 
+            dishes_service.repository, 
             "insert", 
             return_value = None)
     

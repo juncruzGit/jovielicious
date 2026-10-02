@@ -9,4 +9,4 @@ def dishes_service():
     return DishesService()
 
 def test_repository_type(dishes_service):
-    assert type(dishes_service._repository) is DishRepository
+    assert type(dishes_service.repository) is DishRepository

@@ -1,12 +1,9 @@
 from typing import cast
 from fastapi import APIRouter, status, HTTPException, Response
 
-# from packages.api.resources import DishResource
 from ..resources import DishResource
 from ...data.model.dish import Dish
-
 from ...service.dishes_service import DishesService
-
 
 dishes_service : DishesService = DishesService()
 
@@ -33,5 +30,3 @@ async def get() -> list[DishResource]:
 async def post(item: DishResource) -> DishResource: 
     result: Dish | None = dishes_service.add(cast(Dish, item))
     return cast(DishResource, result)
-
-

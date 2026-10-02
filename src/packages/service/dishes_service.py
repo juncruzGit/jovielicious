@@ -4,23 +4,29 @@ from ..data.repository.dish_repository import DishRepository
 from ..data.model.dish import Dish, DishSize
 
 class DishesService():
-    _repository = DishRepository()
+    __repository = DishRepository()
 
     def add(self, item: Dish) -> Dish | None:
         if (item.id is None or 
-            self._repository.find(item.id) is None): 
+            self.__repository.find(item.id) is None): 
                 item.id = item.name
-                self._repository.insert(item)
+                self.__repository.insert(item)
                 return item
         else:
             return None
 
-         
+    @property
+    def repository(self) -> DishRepository:
+         return self.__repository;
+
+
     def get(self, criteria: dict | None = None) -> list[Dish] | None:
-        return self._repository.get(criteria)
+        return self.__repository.get(criteria)
+
 
     def modify(self, item: Dish) -> None:
-        return self._repository.update(item)
+        return self.__repository.update(item)
+
 
     def remove(self, id: str) -> bool:
-        return self._repository.delete(id)
+        return self.__repository.delete(id)

@@ -9,6 +9,10 @@ class DishService():
 
     __repository = DishRepository()
 
+    @property
+    def repository(self) -> DishRepository: 
+        return self.__repository
+
     def get(self, id: str) -> Dish:
         return self.__repository.find(id)
 
