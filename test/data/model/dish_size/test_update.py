@@ -11,13 +11,10 @@ def dishsize():
                     price = 100.00)
 
 
-
 def test_updated_description(dishsize):
     updated_dishsize = dishsize.update(description="updated description", price=200) 
-
     assert updated_dishsize.description == "updated description" , "description should be equal to updated description"
 
 def test_updated_price(dishsize):
     updated_dishsize = dishsize.update(description="updated description", price=200)
-
     assert updated_dishsize.price == 200, "price should be updated to 200"
