@@ -24,7 +24,7 @@ class DishSizes:
         
     def add_size(self, dishSize: DishSize)->bool:
         if (dishSize in self.items):
-            logging.info(f"Dish {dishSize.size} already exists")
+            logging.info(f"Dish {dishSize.size} already exists.")
             return False
         else:
             logging.info(f'Adding {dishSize}')
@@ -52,15 +52,21 @@ class DishSizes:
 
         
     def get_size(self, size: str) -> DishSize | None:
-            idx = self.__get_size_index(size)
+            idx: int | None = self.__get_size_index(size)
             if (idx == None):
                 return None
             else:
                 return self.items[idx] 
 
             
-    def __get_size_index(self, size:str) -> int:
-            return [i for i, x in enumerate(self.items) if x.size.lower() == size][0]
+    def __get_size_index(self, size:str) -> int | None:
+            try:
+                result: int = [i for i, x in enumerate(self.items) if x.size.lower() == size][0]
+            except IndexError:
+                 return None
+            else:
+                return result
+                
 
 
 

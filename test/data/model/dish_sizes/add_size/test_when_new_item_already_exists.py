@@ -3,14 +3,14 @@ import pytest
 from src.packages.data.model.dish_sizes import DishSizes
 from src.packages.data.model.dish_size import DishSize
 
-
 """Arrange dishsizes where new item already exists"""
 __medium_dishsize = DishSize(size="medium", description="dish medium description", price=200.00)
 __new_item = DishSize(size="medium", description="dish medium description", price=200.00)
 
 
 @pytest.fixture
-def dish_sizes():
+def dish_sizes(mocker):
+
     __dish_sizes= DishSizes()
     __dish_sizes.add_size(__medium_dishsize)
     return __dish_sizes
@@ -25,8 +25,9 @@ def test_items_count(dish_sizes):
     dish_sizes.add_size(__new_item)
     assert len(dish_sizes.items) == 1, "item count should be 1"
 
+def test_logging(dish_sizes, mocker):
+    mock_logging = mocker.patch('src.packages.data.model.dish_sizes.logging.info')
+    dish_sizes.add_size(__new_item)
+    mock_logging.assert_called_once_with("Dish medium already exists.")
 
-# def test_should_log_something(dishsizes_add_size):
-#     dish_sizes, new_size, result = dishsizes_add_size 
-#     assert new_size in dish_sizes.items, "items should contains medium_dishsize"
    

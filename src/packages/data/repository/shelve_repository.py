@@ -26,9 +26,9 @@ class ShelveRepository():
                 print(f'No record found for {id}')
             else:
                 return item
-        # return super().find(id)
 
-    def get(self, criteria: dict) -> list[any]: # type: ignore[type-abstract]
+
+    def get(self, criteria: dict | None = None) -> list[any]: # type: ignore[type-abstract]
         with shelve.open(self._name) as db:
             if criteria == None:
                 result = list(db.values())
@@ -45,7 +45,6 @@ class ShelveRepository():
             else:
                 print (f'Record {id} no longer exists!')
     
-
 
     def itemExist(self, item : any) -> bool : # type: ignore[type-abstract]
         with shelve.open(self._name) as db:

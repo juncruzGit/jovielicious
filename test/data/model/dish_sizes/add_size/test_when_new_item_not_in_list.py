@@ -28,4 +28,9 @@ def test_items_count(dish_sizes):
 def test_items_updated_item(dish_sizes):
     dish_sizes.add_size(__new_dishsize)  
     assert __new_dishsize in dish_sizes.items, "items should contains new_dishsize"
+
+def test_logging(dish_sizes, mocker):
+    mock_logging_info = mocker.patch('src.packages.data.model.dish_sizes.logging.info')
+    dish_sizes.add_size(__new_dishsize)
+    mock_logging_info.assert_called_once_with(f'Adding {__new_dishsize}')
    
