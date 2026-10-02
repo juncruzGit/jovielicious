@@ -3,23 +3,26 @@ import pytest
 from src.packages.data.model.dish_sizes import DishSizes
 from src.packages.data.model.dish_size import DishSize
 
+
+"""Arrange dishsizes where new item already exists"""
+__medium_dishsize = DishSize(size="medium", description="dish medium description", price=200.00)
+__new_item = DishSize(size="medium", description="dish medium description", price=200.00)
+
+
 @pytest.fixture
-def dishsizes_add_size():
-    dish_sizes = DishSizes()
-    medium_dishsize = DishSize(size="medium", description="dish medium description", price=200.00)
-    new_item = DishSize(size="medium", description="dish medium description", price=200.00)
-    dish_sizes.add_size(medium_dishsize)
-    result : bool = dish_sizes.add_size(new_item)
-    yield dish_sizes, new_item, result
+def dish_sizes():
+    __dish_sizes= DishSizes()
+    __dish_sizes.add_size(__medium_dishsize)
+    return __dish_sizes
 
 
-def test_return_value_should_be_False(dishsizes_add_size):
-    dish_sizes, new_size, result = dishsizes_add_size 
-    assert result is False, "result should be equal to False"
+def test_return_value(dish_sizes):
+    __result : bool = dish_sizes.add_size(__new_item)
+    assert __result is False, "result should be equal to False"
 
 
-def test_count_should_remains_as_one(dishsizes_add_size):
-    dish_sizes, new_size, result = dishsizes_add_size 
+def test_items_count(dish_sizes):
+    dish_sizes.add_size(__new_item)
     assert len(dish_sizes.items) == 1, "item count should be 1"
 
 

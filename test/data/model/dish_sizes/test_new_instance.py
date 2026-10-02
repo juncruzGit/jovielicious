@@ -8,9 +8,10 @@ def dishsizes():
       return DishSizes()
 
 
-def test_new_instance_items_not_None(dishsizes):
+def test_items_not_None(dishsizes):
     assert dishsizes.items is not None
 
 
-def test_new_instance_items_count(dishsizes):
+def test_items_count(dishsizes):
     assert len(dishsizes.items) == 0
+
