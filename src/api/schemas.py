@@ -7,7 +7,8 @@ class DishResource (BaseModel):
     id: str | None = None  
     name: str
     category: str
-    sizes : DishSizes | None = None
+    sizes : DishSizesResource | None = None
+
 
 class DishSizeResource(BaseModel):
     size: str

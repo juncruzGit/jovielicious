@@ -1,9 +1,8 @@
 from typing import cast
 from fastapi import APIRouter, HTTPException, status
 
-from src import Dish, DishResource
+from src import Routes, Dish, DishResource
 from ...dependencies import dishes_service_dep
-from src import Routes
 
 
 router = APIRouter(
@@ -31,8 +30,9 @@ async def get(dishes_service: dishes_service_dep) -> list[DishResource]:
     status_code = status.HTTP_200_OK,
     response_model = DishResource
 )
-async def post(item: Dish, dishes_service: dishes_service_dep) -> DishResource: 
-    result: Dish | None = dishes_service.add(cast(Dish, item))
+async def post(item: DishResource, dishes_service: dishes_service_dep) -> DishResource: 
+    result: Dish | None = dishes_service.add(Dish(**item.model_dump())
+)
     if result is None:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST, 

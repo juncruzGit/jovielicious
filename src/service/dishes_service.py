@@ -1,8 +1,6 @@
-
 from src.containers import Container, DishRepository
 
-from src import BaseService
-from src import Dish
+from src import BaseService, Dish
 
 
 class DishesService(BaseService):
@@ -20,6 +18,7 @@ class DishesService(BaseService):
     @repository.setter
     def repository(self, value:DishRepository):
         self.__repository = value
+        
     
     def add(self, item: Dish) -> Dish | None:
         print(item.category)

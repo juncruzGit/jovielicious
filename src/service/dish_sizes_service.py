@@ -1,6 +1,6 @@
 
 from src.containers import Container, DishRepository
-from src import Dish, DishSize, DishSizes, DishService, BaseService
+from src import Dish, DishSize, DishSizes, BaseService
 
 class DishSizesService(BaseService):
 
@@ -16,11 +16,12 @@ class DishSizesService(BaseService):
     @repository.setter
     def repository(self, value:DishRepository):
         self.__repository = value
+
     
     def get(self, id: str) -> list[DishSize] | None:
         dish: Dish | None = self.__get_dish(id)
         
-        if (dish is None or len(dish.sizes.items) == 0):
+        if (dish is None or dish.sizes is None or len(dish.sizes.items) == 0):
             return None
 
         dish_sizes: DishSizes = dish.sizes
@@ -35,6 +36,7 @@ class DishSizesService(BaseService):
 
         dish_sizes: DishSizes = dish.sizes
         return dish_sizes.get_size(size)
+
 
     def add_size(self, id: str, new_size: DishSize) -> list[DishSize] | None: 
         dish: Dish | None = self.__get_dish(id)

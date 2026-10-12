@@ -1,8 +1,8 @@
-from src import DishRepository, DishesService, Dish
+from src import DishesService, Dish
 
 def test_when_invoked(dishes_service: DishesService, mocked_repo, sample_dish: Dish):
     dishes_service.add(sample_dish)
-    mocked_repo.find.assert_called_once_with(sample_dish.id), "Should find dish id from repo"
+    mocked_repo.find.assert_called_once_with(sample_dish.id)
 
 
 def test_when_item_already_exist(dishes_service:DishesService, mocked_repo, sample_dish: Dish):

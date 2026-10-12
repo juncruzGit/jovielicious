@@ -1,10 +1,9 @@
-
 from dataclasses import dataclass
-from pydantic import BaseModel
+
 from src import DishSize
 
 @dataclass
-class DishSizes(BaseModel):
+class DishSizes():
     
     def __init__(self, items: list[DishSize] | None = None):
         if items is not None:
@@ -19,32 +18,22 @@ class DishSizes(BaseModel):
         
     @items.setter
     def items(self, value: list[DishSize]):
-        self.items = value
+        self._items = value
 
         
     def add_size(self, dish_size: DishSize)->bool:
-
         if self.get_size(dish_size.size) is None:
             self.items.append(dish_size)
             return True
         else:
             return False
         
-        
-        # matches = filter(lambda x: x.size == dish_size.size, self.items)
-
-        # if (matches is None):
-        #     return False
-        # else:
-        #     self.items.append(dish_size)
-        #     return True
-
-
     def update_size(self, dish_size: DishSize) -> bool:
             updated_size: DishSize | None = self.get_size(dish_size.size)
 
             if updated_size is not None:
-                 updated_size.update(description = dish_size.description, price = dish_size.price)
+                 updated_size.update(description=dish_size.description,
+                                     price = dish_size.price)
                  return True
             else:
                  return False
@@ -69,7 +58,9 @@ class DishSizes(BaseModel):
             
     def __get_size_index(self, size:str) -> int | None:
             try:
-                result: int = [i for i, x in enumerate(self.items) if x.size.lower() == size][0]
+                result: int = [i for i,
+                               x in enumerate(self.items) 
+                               if x.size.lower() == size][0]
             except IndexError:
                  return None
             else:

@@ -1,4 +1,3 @@
-
 class Routes():
     dishes = "/dishes"
     dish = "/dishes/{id}"

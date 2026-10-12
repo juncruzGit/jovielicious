@@ -1,5 +1,4 @@
 from typing import Annotated
-
 from fastapi import Depends
 
 from src import DishService, DishesService, DishSizesService
@@ -24,6 +23,4 @@ def get_dish_sizes_service(db: Annotated[DishRepository, Depends(get_repository)
 dishes_service_dep = Annotated[DishesService, Depends(get_dishes_service)]
 dish_service_dep = Annotated[DishService, Depends(get_dish_service)]
 dish_sizes_service_dep = Annotated[DishSizesService, Depends(get_dish_sizes_service)]
-
-   
 

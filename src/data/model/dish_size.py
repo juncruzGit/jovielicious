@@ -1,14 +1,9 @@
 from dataclasses import dataclass
-from pydantic import BaseModel
 
 @dataclass
-class DishSize(BaseModel):
+class DishSize():
   
-    def __init__(
-            self, 
-            size: str,
-            description: str,
-            price: float):
+    def __init__(self, size: str, description: str, price: float):
         self.size = size
         self.description = description
         self.price = price

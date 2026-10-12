@@ -1,18 +1,13 @@
 from dataclasses import dataclass
-
 from pydantic import BaseModel, computed_field
 
 from src import DishSizes
 
 @dataclass
-class Dish(BaseModel):
+class Dish():
 
-    def __init__(
-            self, 
-            name: str, 
-            category: str,
-            id: str | None = None,
-            sizes: DishSizes | None = None):
+    def __init__(self, name: str, category: str, id: str | None = None, 
+                 sizes: DishSizes | None = None):
         self.name = name
         self.category = category
 
