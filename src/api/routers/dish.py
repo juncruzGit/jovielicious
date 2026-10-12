@@ -7,7 +7,6 @@ from ...dependencies import dish_service_dep
 router = APIRouter(
     prefix = Routes.dish,
     tags = ["dish"])
-
 @router.get(
         path = "",
         status_code = status.HTTP_200_OK,

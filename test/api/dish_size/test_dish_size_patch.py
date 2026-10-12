@@ -13,6 +13,7 @@ def test_when_updated_size_is_invalid(mocked_dish_sizes_service, test_client, sm
 
 def test_when_updated_size_is_valid(mocked_dish_sizes_service, test_client, small_dish):
     mocked_dish_sizes_service.update_size.return_value = None
+
     response = test_client.patch('/dishes/carbonara/sizes/small', json=small_dish.__dict__)
 
     updated_size: DishSizeResource = DishSizeResource(size='small', 
@@ -24,6 +25,7 @@ def test_when_updated_size_is_valid(mocked_dish_sizes_service, test_client, smal
 
 def test_when_size_to_be_updated_does_exists(mocked_dish_sizes_service, test_client, small_dish):
     mocked_dish_sizes_service.update_size.return_value = None
+    
     response = test_client.patch('/dishes/carbonara/sizes/small', json=small_dish.__dict__)
 
     assert response.status_code == status.HTTP_404_NOT_FOUND, "Should return Not found"
