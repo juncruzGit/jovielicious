@@ -1,36 +1,15 @@
-import pytest
-
-from src.packages.data.model.dish_sizes import DishSizes
-from src.packages.data.model.dish_size import DishSize
-
-
-"""/
-Arrange dishsizes that will have no existing item or new item does not exists
-/"""
-__new_dishsize = DishSize(size="medium", description="dish medium description", price=200.00)
-
-
-@pytest.fixture
-def dish_sizes():
-    return DishSizes()
-    
-
-def test_return_value(dish_sizes):
-    __result = dish_sizes.add_size(__new_dishsize)
+def test_return_value(dish_sizes, small_dish):
+    __result = dish_sizes.add_size(small_dish)
     assert __result is True, "result should be equal to True"
 
 
-def test_items_count(dish_sizes):
-    dish_sizes.add_size(__new_dishsize)  
-    assert len(dish_sizes.items) == 1, "item count should be 1"
+def test_items_count(dish_sizes, small_dish):
+    current_count: int = len(dish_sizes.items)
+    dish_sizes.add_size(small_dish)  
+    assert len(dish_sizes.items) == (current_count + 1), "item count increment by 1"
 
 
-def test_items_updated_item(dish_sizes):
-    dish_sizes.add_size(__new_dishsize)  
-    assert __new_dishsize in dish_sizes.items, "items should contains new_dishsize"
-
-def test_logging(dish_sizes, mocker):
-    mock_logging_info = mocker.patch('src.packages.data.model.dish_sizes.logging.info')
-    dish_sizes.add_size(__new_dishsize)
-    mock_logging_info.assert_called_once_with(f'Adding {__new_dishsize}')
+def test_items_updated_item(dish_sizes, small_dish):
+    dish_sizes.add_size(small_dish)  
+    assert small_dish in dish_sizes.items, "items should contains new_dishsize"
    

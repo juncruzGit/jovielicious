@@ -1,18 +1,4 @@
-import pytest
-
-from src.packages.data.model.dish_sizes import DishSizes
-from src.packages.data.model.dish_size import DishSize
-
-
-"""Arrange dishsizes with one item"""
-__dish_sizes= DishSizes()
-__medium_dishsize = DishSize(size="medium", description="dish medium description", price=200.00)
-
-
-@pytest.fixture
-def dish_sizes():
-    __dish_sizes.add_size(__medium_dishsize)
-    return __dish_sizes
+from src import DishSize
 
 def test_return_value(dish_sizes):
     size_to_update = DishSize(size="small", description="dish small description", price=300.00)
