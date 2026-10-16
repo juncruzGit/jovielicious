@@ -2,7 +2,6 @@ from src.containers import Container, DishRepository
 from src.data import Dish
 from .base_service import BaseService
 
-
 class DishService(BaseService):
 
     __repository: DishRepository

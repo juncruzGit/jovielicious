@@ -1,6 +1,5 @@
 from pydantic import BaseModel
 
-
 class DishResource (BaseModel):
     id: str | None = None  
     name: str

@@ -1,6 +1,4 @@
 from fastapi import FastAPI
-
-# from routers import dish, dishes, dish_sizes, dish_size
 from .routers import dishes
 
 app = FastAPI()
