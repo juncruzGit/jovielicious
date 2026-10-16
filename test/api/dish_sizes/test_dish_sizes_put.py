@@ -1,5 +1,5 @@
 from fastapi import status
-from src import DishSize
+from src.data import DishSize
 
 
 def act(mocked_dish_sizes_service, test_client, sample_dish, return_value: list[DishSize] | None = None):

@@ -1,11 +1,11 @@
 from fastapi import status
-from src import DishSizes
+from src.data import DishSizes
+
 
 def act(mocked_dish_sizes_service, test_client, return_value:list[DishSizes] | None = None):
     mocked_dish_sizes_service.get.return_value = return_value
     
     return test_client.get("/dishes/carbonara/sizes")
-
 
 def test_when_invoked(mocked_dish_sizes_service, test_client):
     act(mocked_dish_sizes_service, test_client)

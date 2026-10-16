@@ -1,13 +1,13 @@
-from unittest.mock import MagicMock
-
 import pytest
 
+from unittest.mock import MagicMock
 from fastapi.testclient import TestClient
+
 from src import app
-from src import DishesService, DishService, DishSizesService
+from src.service import DishesService, DishService, DishSizesService
 
 from src.dependencies import get_dishes_service, get_dish_service, get_dish_sizes_service
-from src.data.repository.dish_repository import DishRepository
+
 
 @pytest.fixture
 def test_client():
@@ -66,20 +66,3 @@ def mocked_dish_sizes_service(mocker):
     
     # 4. Teardown: Automatically clear the override when the test ends
     app.dependency_overrides.clear()
-
-
-@pytest.fixture
-def mocked_dish_size_service(mocker):
-    """Fixture to create, inject, and automatically clean up the mock service."""
-    # 1. Create a mock object that mimics the UserService class structure
-    mock_service = MagicMock(spec=DishSizeService)
-    
-    # 2. Inject the mock into FastAPI's dependency overrides (wrapped in a lambda)
-    app.dependency_overrides[get_dish_sizes_service] = lambda: mock_service
-    
-    # 3. Hand the mock over to the test function
-    yield mock_service
-    
-    # 4. Teardown: Automatically clear the override when the test ends
-    app.dependency_overrides.clear()
-

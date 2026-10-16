@@ -1,5 +1,4 @@
-
-from src import DishSize
+from src.data import DishSize
 
 
 def test_when_invoked(dish_sizes_service, mocked_repo):

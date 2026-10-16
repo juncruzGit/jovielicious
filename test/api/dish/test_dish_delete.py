@@ -6,9 +6,6 @@ def act(mocked_dish_service, test_client, return_value: bool):
 
 
 def test_when_invoked(mocked_dish_service, test_client):
-    # mocked_dish_service.remove.return_value = True
-
-    # response = test_client.delete('/dishes/carbonara')
     act(mocked_dish_service, test_client, True)
 
     mocked_dish_service.remove.assert_called_once_with("carbonara")

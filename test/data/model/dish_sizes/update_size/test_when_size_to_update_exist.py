@@ -1,7 +1,6 @@
 import pytest
 
-from src import DishSizes
-from src import DishSize
+from src.data import DishSizes, DishSize
 
 """Arrange dishsizes with one item"""
 __dish_sizes= DishSizes()

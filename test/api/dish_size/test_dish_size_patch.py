@@ -1,7 +1,6 @@
-from typing import cast
-
 from fastapi import status
-from src import DishSizeResource, DishSize
+from src.api.schemas import DishSizeResource
+from src.data import DishSize
 
 
 def act(mocked_dish_sizes_service, test_client, dish_to_update,

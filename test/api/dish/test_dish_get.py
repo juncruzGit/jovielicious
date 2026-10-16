@@ -1,6 +1,6 @@
 from fastapi import status
 
-from src import Dish
+from src.data import Dish
 
 def act(mocked_dish_service, test_client, return_value : Dish | None = None):
     mocked_dish_service.get.return_value = return_value

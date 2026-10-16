@@ -1,4 +1,6 @@
-from src import DishesService, Dish
+from src.service import DishesService
+from src.data import Dish
+
 
 def test_when_invoked(dishes_service: DishesService, mocked_repo, sample_dish: Dish):
     dishes_service.add(sample_dish)

@@ -1,7 +1,6 @@
-from dataclasses import dataclass
-
 from src.containers import Container, DishRepository
-from src import BaseService, Dish
+from src.data import Dish
+from .base_service import BaseService
 
 
 class DishService(BaseService):

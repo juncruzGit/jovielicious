@@ -1,7 +1,7 @@
 from typing import cast
 
 from fastapi import status
-from src import DishResource
+from src.api.schemas import DishResource
 
 def act(mocked_dish_service, test_client, sample_dish, return_value: DishResource | None = None ):
     mocked_dish_service.modify.return_value = return_value

@@ -1,6 +1,6 @@
+from src.data import DishRepository
+from src.service import DishesService
 
-from src import DishesService
-from src.containers import DishRepository
 
 def test_repository_type():
     dishes_service = DishesService()

@@ -1,7 +1,5 @@
 from pydantic import BaseModel
 
-from src import Dish, DishSize, DishSizes
-
 
 class DishResource (BaseModel):
     id: str | None = None  

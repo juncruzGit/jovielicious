@@ -1,7 +1,7 @@
 import pytest
 
-from src import DishService, DishesService, DishSizesService
-from src.containers import DishRepository
+from src.service import DishService, DishesService, DishSizesService
+from src.data import DishRepository
 
 @pytest.fixture
 def mocked_repo(mocker):

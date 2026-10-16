@@ -1,5 +1,4 @@
-
-from src import DishSizes
+from src.data import DishSizes
 
 
 def test_items_not_None():

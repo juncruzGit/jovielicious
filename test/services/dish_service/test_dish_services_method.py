@@ -1,4 +1,6 @@
-from src import DishService, Dish
+from src.service import DishService
+from src.data import Dish
+
 
 def test_get(dish_service: DishService, mocked_repo):
     dish_service.get("carbonara")

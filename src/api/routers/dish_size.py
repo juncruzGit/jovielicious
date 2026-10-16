@@ -1,8 +1,10 @@
 from typing import cast
 from fastapi import APIRouter, status, HTTPException
 
-from src import Routes, DishSizeResource, DishSize
-from ...dependencies import dish_sizes_service_dep
+from src.dependencies import dish_sizes_service_dep
+from src.constants import Routes
+from src.data import DishSize
+from ..schemas import DishSizeResource
 
 
 router = APIRouter(prefix = Routes.dish_size, tags = ["dish size"])

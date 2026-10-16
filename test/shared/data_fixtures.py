@@ -1,6 +1,6 @@
 import pytest
 
-from src import Dish, DishSize, DishSizes
+from src.data import Dish, DishSize, DishSizes
 
 @pytest.fixture
 def sample_dish() -> Dish:

@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from pydantic import BaseModel, computed_field
 
-from src import DishSizes
+from .dish_sizes import DishSizes
 
 @dataclass
 class Dish():

@@ -1,4 +1,4 @@
-from src import DishSizesService
+from src.service import DishSizesService
 from src.containers import DishRepository
 
 def test_repository_type():

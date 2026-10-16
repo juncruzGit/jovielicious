@@ -1,8 +1,8 @@
 from typing import Annotated
 from fastapi import Depends
 
-from src import DishService, DishesService, DishSizesService
-from src import DishRepository
+from src.service import DishService, DishesService, DishSizesService
+from src.data import DishRepository
 
 def get_repository():
     repository = DishRepository()

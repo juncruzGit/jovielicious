@@ -1,5 +1,4 @@
-from src import DishSize
-
+from src.data import DishSize
 
 def test_when_size_exist(dish_sizes, medium_dish):
     result: DishSize | None = dish_sizes.get_size("medium")

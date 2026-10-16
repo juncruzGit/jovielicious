@@ -1,8 +1,10 @@
 from typing import cast
 from fastapi import APIRouter, status, HTTPException
 
-from src import Dish, DishResource, Routes
-from ...dependencies import dish_service_dep
+from src.dependencies import dish_service_dep
+from src.constants import Routes
+from src.data import Dish
+from ..schemas import DishResource
 
 
 router = APIRouter( prefix = Routes.dish, tags = ["dish"])

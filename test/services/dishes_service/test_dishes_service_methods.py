@@ -1,4 +1,5 @@
-from src import Dish
+from src.data import Dish
+
 
 def test_get(dishes_service, mocked_repo):
     dishes_service.get()

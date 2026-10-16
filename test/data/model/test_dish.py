@@ -1,7 +1,7 @@
 import pytest
 
-from src import Dish
-from src import DishSizes
+from src.data import Dish, DishSizes
+
 
 @pytest.mark.parametrize("id_val, expected",
                          [("carbonara", "carbonara"),

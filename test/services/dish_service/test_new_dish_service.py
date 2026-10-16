@@ -1,4 +1,4 @@
-from src import DishService
+from src.service import DishService
 from src.containers import DishRepository
 
 def test_repository_type():
